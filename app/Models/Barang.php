@@ -8,15 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Barang extends Model
 {
     use HasFactory;
-
-    /**
-     * Nama tabel yang digunakan
-     */
     protected $table = 'barang';
 
-    /**
-     * Kolom yang bisa diisi secara massal
-     */
     protected $fillable = [
         'nama_produk',
         'harga',

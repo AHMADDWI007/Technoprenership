@@ -95,7 +95,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-end">
                             <a href="{{ route('barang-create') }}" class="btn btn-success">
-                                 Tambah Produk <i class="fas fa-plus-square"></i>
+                                Tambah Produk <i class="fas fa-plus-square"></i>
                             </a>
                         </div>
                     </div>

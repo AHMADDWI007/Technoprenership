@@ -1,0 +1,38 @@
+/* === Custom Shop Filter Style === */
+.product-filters ul li a {
+  color: #000 !important; /* teks kategori default hitam */
+  font-weight: 600;
+  transition: color 0.3s ease-in-out !important;
+}
+
+.product-filters ul li.active a {
+  color: #fff !important; /* teks kategori aktif putih */
+}
+
+/* Style button kategori */
+.product-filters ul li {
+  border: 2px solid #051922;
+  border-radius: 25px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.product-filters ul li.active {
+  border: 2px solid #F28123 !important;
+  background-color: #F28123 !important;
+}
+
+/* Produk animasi saat filter */
+.product-lists {
+  transition: all 0.3s ease-in-out !important;
+}
+
+.single-product-item {
+  transition: transform 0.3s ease, opacity 0.3s ease !important;
+}
+
+.single-product-item.isotope-hidden {
+  opacity: 0 !important;
+  transform: scale(0.9) !important;
+}

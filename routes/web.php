@@ -5,6 +5,8 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,3 +33,20 @@ Route::delete('/kategori/{id}', [KategoriController::class, 'destroy'])->name('d
 Route::get('/data-pesanan', [PesananController::class, 'index'])->name('data-pesanan');
 Route::put('/pesanan/{id}/status', [PesananController::class, 'updateStatus'])->name('pesanan-update-status');
 Route::delete('/pesanan/{id}', [PesananController::class, 'destroy'])->name('pesanan-destroy');
+
+Route::get('/beranda-user', function(){
+    return view('HalamanUser.beranda-user');
+})->name('beranda-user');
+
+Route::get('/shop-user', [ShopController::class, 'index'])->name('shop-user');
+Route::get('/shop/filter', [ShopController::class, 'filter'])->name('shop.filter');
+
+Route::get('/about-user', function(){
+    return view('HalamanUser.about-user');
+})->name('about-user');
+
+// Cart routes
+Route::get('/cart-user', [CartController::class, 'index'])->name('cart-user');
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
