@@ -9,9 +9,7 @@ use App\Models\DetailPesanan;
 
 class PesananController extends Controller
 {
-    /**
-     * Tampilkan semua pesanan
-     */
+    // Tampilkan semua pesanan
     public function index()
     {
         // Ambil semua pesanan + detail + barang
@@ -19,18 +17,14 @@ class PesananController extends Controller
         return view('Pesanan.data-pesanan', compact('pesanan'));
     }
 
-    /**
-     * Form tambah pesanan
-     */
+    // Form tambah pesanan
     public function create()
     {
         $barang = Barang::all(); // ambil semua barang
         return view('Pesanan.tambah-pesanan', compact('barang'));
     }
 
-    /**
-     * Simpan pesanan baru
-     */
+    // Simpan pesanan baru
     public function store(Request $request)
     {
         // Simpan pesanan utama
@@ -67,23 +61,21 @@ class PesananController extends Controller
         return redirect()->route('data-pesanan')->with('success', 'Pesanan berhasil ditambahkan');
     }
 
-    /**
-     * Edit pesanan
-     */
+    // Form edit pesanan
     public function edit($id)
     {
-        $pesanan = Pesanan::with('detail')->findOrFail($id);
-        $barang = Barang::all();
+        $pesanan = Pesanan::with('detail')->findOrFail($id); // Ambil pesanan dengan detail
+        $barang = Barang::all(); // Ambil semua barang
 
         return view('Pesanan.edit-pesanan', compact('pesanan', 'barang'));
     }
 
-    /**
-     * Update pesanan
-     */
+    // Update pesanan
     public function update(Request $request, $id)
     {
         $pesanan = Pesanan::findOrFail($id);
+
+        // Update data utama pesanan
         $pesanan->update([
             'nama_pembeli' => $request->nama_pembeli,
             'status'       => $request->status,
@@ -113,14 +105,13 @@ class PesananController extends Controller
             $total += $subtotal;
         }
 
+        // Update total harga
         $pesanan->update(['total_harga' => $total]);
 
         return redirect()->route('data-barang')->with('success', 'Pesanan berhasil diupdate');
     }
 
-    /**
-     * Hapus pesanan
-     */
+    // Hapus pesanan
     public function destroy($id)
     {
         Pesanan::findOrFail($id)->delete();
@@ -128,6 +119,7 @@ class PesananController extends Controller
         return redirect()->route('data-barang')->with('success', 'Pesanan berhasil dihapus');
     }
 
+    // Update status pesanan (via AJAX / API)
     public function updateStatus(Request $request, $id)
     {
         try {

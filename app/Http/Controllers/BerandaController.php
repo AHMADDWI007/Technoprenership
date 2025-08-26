@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 
 class BerandaController extends Controller
 {
-    /**
-     * Menampilkan halaman beranda
-     */
+    // Menampilkan halaman beranda
     public function index()
     {
         // Hitung total barang

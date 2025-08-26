@@ -19,9 +19,7 @@ class Pesanan extends Model
         'status',
     ];
 
-    /**
-     * Relasi ke DetailPesanan (One to Many)
-     */
+    // Relasi ke DetailPesanan (satu pesanan punya banyak detail)
     public function detail()
     {
         return $this->hasMany(DetailPesanan::class, 'pesanan_id');

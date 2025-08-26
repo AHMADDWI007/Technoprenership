@@ -24,7 +24,8 @@
                 <!-- Dashboard Section -->
                 <li class="nav-header">Dashboard</li>
                 <li class="nav-item">
-                    <a href="{{ route('beranda') }}" class="nav-link">
+                    <a href="{{ route('beranda') }}"
+                        class="nav-link {{ request()->routeIs('beranda') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -33,13 +34,15 @@
                 <!-- Menu Section -->
                 <li class="nav-header">Menu</li>
                 <li class="nav-item">
-                    <a href="{{ route('data-barang') }}" class="nav-link">
+                    <a href="{{ route('data-barang') }}"
+                        class="nav-link {{ request()->routeIs('data-barang') || request()->routeIs('barang*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-box"></i>
                         <p>Data Produk</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('data-pesanan') }}" class="nav-link">
+                    <a href="{{ route('data-pesanan') }}"
+                        class="nav-link {{ request()->routeIs('data-pesanan') || request()->routeIs('pesanan*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>Data Pesanan</p>
                     </a>
@@ -57,7 +60,8 @@
                 <!-- Master Section -->
                 <li class="nav-header">Master</li>
                 <li class="nav-item">
-                    <a href="{{ route('data-kategori') }}" class="nav-link">
+                    <a href="{{ route('data-kategori') }}"
+                        class="nav-link {{ request()->routeIs('data-kategori') || request()->routeIs('create-kategori') || request()->routeIs('edit-kategori') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tags"></i>
                         <p>Kategori</p>
                     </a>

@@ -9,14 +9,10 @@ class Barang extends Model
 {
     use HasFactory;
 
-    /**
-     * Nama tabel yang digunakan
-     */
+    // Nama tabel yang digunakan
     protected $table = 'barang';
 
-    /**
-     * Kolom yang bisa diisi secara massal
-     */
+    // Kolom yang bisa diisi secara massal
     protected $fillable = [
         'nama_produk',
         'harga',
@@ -26,6 +22,7 @@ class Barang extends Model
         'gambar'
     ];
 
+    // Relasi ke tabel kategori (satu barang dimiliki satu kategori)
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'kategori_id');

@@ -9,7 +9,7 @@ class Kategori extends Model
 {
     use HasFactory;
 
-    // Tentukan nama tabel jika tidak mengikuti konvensi Laravel
+    // Nama tabel yang digunakan
     protected $table = 'kategori'; // Sesuaikan dengan nama tabel di database
 
     // Tentukan atribut yang dapat diisi (mass assignment)
