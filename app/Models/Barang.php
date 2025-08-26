@@ -9,10 +9,9 @@ class Barang extends Model
 {
     use HasFactory;
 
-    // Nama tabel yang digunakan
+    // Kolom yang bisa diisi secara massal
     protected $table = 'barang';
 
-    // Kolom yang bisa diisi secara massal
     protected $fillable = [
         'nama_produk',
         'harga',
