@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css?v=2') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css?v=2') }}">
 
 </head>
 <body>
@@ -161,7 +161,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-team-item">
                         <div class="team-bg team-bg-1"></div>
-                        <h4>Ahmad Duwi Kurnia <span>Backend Developer</span></h4>
+                        <h4>Ahmad Dwi Kurnia <span>Backend Developer</span></h4>
                         <ul class="social-link-team">
                             <li><a href="https://www.instagram.com/_ahmwi?igsh=dWZxMXBlbGVudmZi" target="_blank"><i class="fab fa-instagram"></i></a></li>
                         </ul>
