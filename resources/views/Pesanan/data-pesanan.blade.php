@@ -56,10 +56,6 @@
 
         <div class="content">
             <div class="card card-info card-outline">
-                {{-- <div class="card-header">
-                    <h3 class="card-title">Daftar Pesanan</h3>
-                </div> --}}
-
                 <div class="card-body">
                     <table class="table table-hover table-bordered">
                         <thead>
@@ -73,17 +69,22 @@
                             <th>Total Harga</th>
                             <th>Tanggal/Jam</th>
                             <th>Status</th>
-                            <th>Aksi</th>
+                            {{-- KOLOM AKSI DIHAPUS KARENA HANYA TINGGAL FUNGSI UPDATE STATUS --}}
                         </tr>
                         </thead>
                         <tbody>
                         @php $no = 1; @endphp
-                       @foreach ($pesanan as $psn)
+                        @foreach ($pesanan as $psn)
                                 @foreach ($psn->detail as $index => $detailPesanan)
                                     <tr>
                                         @if ($index == 0)
                                             <td rowspan="{{ $psn->detail->count() }}">{{ $no++ }}</td>
-                                            <td rowspan="{{ $psn->detail->count() }}" style="text-align: left;">{{ $psn->nama_pembeli }}</td>
+                                            <td rowspan="{{ $psn->detail->count() }}" style="text-align: left;">
+                                                {{ $psn->nama_pembeli }}
+                                                {{-- Jika Anda menambahkan nomor HP dan Metode Bayar di Controller, tampilkan di sini --}}
+                                                @if(isset($psn->nomor_hp))<br><small>HP: {{ $psn->nomor_hp }}</small>@endif
+                                                @if(isset($psn->metode_bayar))<br><small>Bayar: {{ $psn->metode_bayar }}</small>@endif
+                                            </td>
                                         @endif
 
                                         <td style="text-align: left;">{{ $detailPesanan->barang->nama_produk }}</td>
@@ -91,9 +92,19 @@
                                         <td>{{ $detailPesanan->deskripsi_request ?? '-' }}</td>
                                         <td>
                                             @if($detailPesanan->foto_request)
-                                                <a href="{{ asset('uploads/'.$detailPesanan->foto_request) }}" target="_blank">
-                                                    <img src="{{ asset('uploads/'.$detailPesanan->foto_request) }}" class="thumbnail-img">
-                                                </a>
+                                                {{-- Asumsi foto_request di detail pesanan adalah path tunggal atau string JSON --}}
+                                                @php
+                                                    $imagePaths = is_string($detailPesanan->foto_request) && (str_starts_with($detailPesanan->foto_request, '[') || str_starts_with($detailPesanan->foto_request, '"')) ? json_decode($detailPesanan->foto_request) : [$detailPesanan->foto_request];
+                                                    $firstImagePath = is_array($imagePaths) && !empty($imagePaths) ? $imagePaths[0] : $detailPesanan->foto_request;
+                                                @endphp
+                                                
+                                                @if($firstImagePath)
+                                                    <a href="{{ asset('storage/' . $firstImagePath) }}" target="_blank">
+                                                        <img src="{{ asset('storage/' . $firstImagePath) }}" class="thumbnail-img" alt="Foto Request">
+                                                    </a>
+                                                @else
+                                                    -
+                                                @endif
                                             @else
                                                 -
                                             @endif
@@ -103,28 +114,18 @@
                                             <td rowspan="{{ $psn->detail->count() }}">Rp {{ number_format($psn->total_harga, 0, ',', '.') }}</td>
                                             <td rowspan="{{ $psn->detail->count() }}">{{ $psn->created_at->format('d M Y, H:i') }}</td>
                                             <td rowspan="{{ $psn->detail->count() }}">
-                                                <select onchange="updateStatusPesanan({{ $psn->id }}, this.value)">
+                                                <select onchange="updateStatusPesanan({{ $psn->id }}, this.value)" class="form-control form-control-sm">
                                                     <option value="menunggu" {{ $psn->status == 'menunggu' ? 'selected' : '' }}>Menunggu Konfirmasi</option>
                                                     <option value="selesai" {{ $psn->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
-                                                    {{-- Jika Anda menambahkan 'diproses' di migrasi, tambahkan baris ini: --}}
-                                                    {{-- <option value="diproses" {{ $psn->status == 'diproses' ? 'selected' : '' }}>Sedang Diproses</option> --}}
+                                                    {{-- Tambahkan status 'diproses' jika ada di migrasi/Model --}}
                                                 </select>
                                             </td>
-                                            <td rowspan="{{ $psn->detail->count() }}">
-                                                <form action="{{ route('pesanan-destroy', $psn->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus Pesanan">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
+                                            {{-- Kolom Aksi (Hapus) Dihapus untuk menghindari error route --}}
                                         @endif
                                     </tr>
                                 @endforeach
                             @endforeach
                         </tbody>
-
                     </table>
                 </div>
             </div>
@@ -151,9 +152,15 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+    // PERBAIKAN: Menggunakan method PUT dan route yang benar
     function updateStatusPesanan(pesananId, status) {
-        axios.post(`/pesanan/update-status/${pesananId}`, {
+        // Asumsi route yang benar di Controller adalah PUT /pesanan/{id}/status
+        const url = `/pesanan/${pesananId}/status`;
+        
+        axios.put(url, {
             status: status,
+            // Jika Anda menggunakan method PUT/PATCH via POST, gunakan _method
+            // _method: 'PUT', // Jika server tidak mengenali PUT/PATCH
             _token: "{{ csrf_token() }}"
         })
         .then(response => {
@@ -166,10 +173,11 @@
             });
         })
         .catch(error => {
+            console.error('AJAX Error:', error.response ? error.response.data : error);
             Swal.fire({
                 icon: 'error',
                 title: 'Gagal',
-                text: 'Status gagal diperbarui'
+                text: 'Status gagal diperbarui. Cek konsol untuk detail error.'
             });
         });
     }

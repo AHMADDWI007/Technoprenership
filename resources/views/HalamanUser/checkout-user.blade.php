@@ -1,223 +1,199 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
-        <!-- title -->
-        <title>Check Out</title>
+    <title>Check Out | GanciKuy</title>
 
-        <!-- favicon -->
-        <link rel="shortcut icon" type="image/png" href="assets/img/gancilogo.png">
-        <!-- google font -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-        <!-- fontawesome -->
-        <link rel="stylesheet" href="assets/css/all.min.css">
-        <!-- bootstrap -->
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <!-- owl carousel -->
-        <link rel="stylesheet" href="assets/css/owl.carousel.css">
-        <!-- magnific popup -->
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <!-- animate css -->
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <!-- mean menu css -->
-        <link rel="stylesheet" href="assets/css/meanmenu.min.css">
-        <!-- main style -->
-        <link rel="stylesheet" href="assets/css/main.css">
-        <!-- responsive -->
-        <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/gancilogo.png') }}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 
-        <style>
-        .payment-label {
-    display: flex;
-    align-items: center;
-    gap: 15px;       /* kasih jarak antar elemen */
-    margin-bottom: 15px; /* kasih spasi antar opsi */
-}
-
-.payment-label img {
-    max-height: 50px;   /* batasi tinggi biar rapi */
-    width: auto;        /* biar proporsional */
-    max-width: 100%;    /* biar responsif */
-    object-fit: contain;
-}
-
-@media (max-width: 576px) {
-    .payment-label img {
-        max-height: 35px; /* logo lebih kecil di HP */
+    <style>
+    .payment-label {
+        display: flex;
+        align-items: center;
+        gap: 15px;      /* kasih jarak antar elemen */
+        margin-bottom: 15px; /* kasih spasi antar opsi */
     }
-}
 
+    .payment-label img {
+        max-height: 50px;   /* batasi tinggi biar rapi */
+        width: auto;        /* biar proporsional */
+        max-width: 100%;    /* biar responsif */
+        object-fit: contain;
+    }
+
+    @media (max-width: 576px) {
+        .payment-label img {
+            max-height: 35px; /* logo lebih kecil di HP */
+        }
+    }
     </style>
 
-    </head>
-    <body>
-        
-        <!--PreLoader-->
-        <div class="loader">
-            <div class="loader-inner">
-                <div class="circle"></div>
-            </div>
+</head>
+<body>
+    
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
         </div>
-        <!--PreLoader Ends-->
-        
-        <!-- header -->
-        <div class="top-header-area" id="sticker">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12 text-center">
-                        <div class="main-menu-wrap">
-                            <!-- logo -->
-                            <div class="site-logo">
-                                <a href="index.html">
-                                    <img src="assets/img/logoganci.png" alt="">
-                                </a>
-                            </div>
-                            <!-- logo -->
-
-                            <!-- menu start -->
-                            <nav class="main-menu">
-                                <ul>
-                                    <li class="current-list-item"><a href="{{ route('beranda-user') }}">Home</a>
-                                    </li>
-                                    <li><a href="{{ route('about-user') }}">About</a></li>
-                                    <li><a href="{{ route('shop-user') }}">Shop</a>
-                                    <ul class="sub-menu">
-                                            <li><a href="{{ route('pesanan-user') }}">Pesanan</a></li>
-                                        </ul>
-                                    <li>
-                                        <div class="header-icons">
-                                            <a class="shopping-cart" href="{{ route('cart-user') }}"><i class="fas fa-shopping-cart"></i></a>
-                                            <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                            <div class="mobile-menu"></div>
-                            <!-- menu end -->
+    </div>
+    <div class="top-header-area" id="sticker">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 text-center">
+                    <div class="main-menu-wrap">
+                        <div class="site-logo">
+                            <a href="{{ route('beranda-user') }}">
+                                <img src="{{ asset('assets/img/logoganci.png') }}" alt="GanciKuy Logo">
+                            </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end header -->
-
-        <!-- search area -->
-        <div class="search-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <span class="close-btn"><i class="fas fa-window-close"></i></span>
-                        <div class="search-bar">
-                            <div class="search-bar-tablecell">
-                                <h3>Search For:</h3>
-                                <input type="text" placeholder="Keywords">
-                                <button type="submit">Search <i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end search arewa -->
-        
-        <!-- breadcrumb-section -->
-        <div class="breadcrumb-section breadcrumb-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2 text-center">
-                        <div class="breadcrumb-text">
-                            <p>Tunggu Apalagi</p>
-                            <h1>Lakukan Pembayaran</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end breadcrumb section -->
-
-        <!-- check out section -->
-        <!-- checkout section -->
-        <div class="checkout-section mt-150 mb-150">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="checkout-accordion-wrap">
-                            <div class="accordion" id="accordionExample">
-
-                                <!-- Metode Pembayaran -->
-                                <div class="card single-accordion">
-                                    <div class="card-header" id="headingOne">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne">
-                                                Pilih Metode Pembayaran <span id="check-payment" style="display:none;">✅</span>
-                                            </button>
-                                        </h5>
+                        <nav class="main-menu">
+                            <ul>
+                                <li><a href="{{ route('beranda-user') }}">Home</a></li>
+                                <li><a href="{{ route('about-user') }}">About</a></li>
+                                <li><a href="{{ route('shop-user') }}">Shop</a></li>
+                                <li><a href="{{ route('pesanan-user') }}">Pesanan</a></li>
+                                <li class="current-list-item">
+                                    <div class="header-icons">
+                                        <a class="shopping-cart" href="{{ route('cart-user') }}">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            @if(session('cart') && count(session('cart')) > 0)
+                                                <span class="cart-badge">{{ count(session('cart')) }}</span>
+                                            @endif
+                                        </a>
+                                        <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                     </div>
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <form id="paymentForm">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="payment" value="Dana" id="payDana">
-                                                    <label class="form-check-label payment-label" for="payDana">
-                                                        <img src="assets/img/logo-dana.png">
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="payment" value="BRI" id="payBri">
-                                                    <label class="form-check-label payment-label" for="payBri">
-                                                        <img src="assets/img/logo-bri.png">
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="payment" value="QRIS" id="payQris">
-                                                    <label class="form-check-label payment-label" for="payQris">
-                                                        <img src="assets/img/logo-qris.png">
-                                                    </label>
-                                                </div>
-                                            </form>
+                                </li>
+                            </ul>
+                        </nav>
+                        <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                        <div class="mobile-menu"></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                    <div class="search-bar">
+                        <div class="search-bar-tablecell">
+                            <h3>Search For:</h3>
+                            <input type="text" placeholder="Keywords">
+                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-section breadcrumb-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="breadcrumb-text">
+                        <p>Tunggu Apalagi</p>
+                        <h1>Lakukan Pembayaran</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="checkout-section mt-150 mb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="checkout-accordion-wrap">
+                        <div class="accordion" id="accordionExample">
+
+                            <div class="card single-accordion">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne">
+                                            Pilih Metode Pembayaran <span id="check-payment" style="display:none;">✅</span>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <form id="paymentForm">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="payment" value="Dana" id="payDana">
+                                                <label class="form-check-label payment-label" for="payDana">
+                                                    <img src="{{ asset('assets/img/logo-dana.png') }}" alt="Dana Logo">
+                                                    Dana
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="payment" value="BRI" id="payBri">
+                                                <label class="form-check-label payment-label" for="payBri">
+                                                    <img src="{{ asset('assets/img/logo-bri.png') }}" alt="BRI Logo">
+                                                    Bank BRI
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="payment" value="QRIS" id="payQris">
+                                                <label class="form-check-label payment-label" for="payQris">
+                                                    <img src="{{ asset('assets/img/logo-qris.png') }}" alt="QRIS Logo">
+                                                    QRIS (Semua Bank/E-Wallet)
+                                                </label>
+                                            </div>
+                                        </form>
+                                        {{-- Tambahkan div ini agar JS bisa menampilkannya --}}
+                                        <div id="paymentDetails" style="display:none;" class="mt-3 p-3 border rounded">
+                                            <p id="paymentInfo" class="mb-2 font-weight-bold"></p>
+                                            <img id="qrisImage" src="{{ asset('assets/img/qris-barcode.png') }}" alt="QRIS Barcode" style="max-width: 200px; display: none;">
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Data Pembeli -->
-                                <div class="card single-accordion">
-                                    <div class="card-header" id="headingTwo">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo">
-                                                Isi Data Pembeli <span id="check-buyer" style="display:none;">✅</span>
-                                            </button>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <form id="buyerForm">
-                                                <p><input type="text" id="buyerName" class="form-control" placeholder="Nama Pembeli" required></p>
-                                                <p><input type="tel" id="buyerPhone" class="form-control" placeholder="Nomor HP Pembeli" required></p>
-                                            </form>
-                                        </div>
+                            <div class="card single-accordion">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo">
+                                            Isi Data Pembeli <span id="check-buyer" style="display:none;">✅</span>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <form id="buyerForm">
+                                            <p><input type="text" id="buyerName" class="form-control" placeholder="Nama Pembeli" required></p>
+                                            <p><input type="tel" id="buyerPhone" class="form-control" placeholder="Nomor HP Pembeli" required></p>
+                                        </form>
                                     </div>
                                 </div>
+                            </div>
 
-                            </div><!-- end accordion -->
-                        </div>
-                    </div>
+                        </div></div>
+                </div>
 
-                    <div class="col-lg-4">
-                        <div class="order-details-wrap">
-                            <table class="order-details">
-                                <thead>
-                                    <tr>
-                                        <th>Your order Details</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="order-details-body">
+                <div class="col-lg-4">
+                    <div class="order-details-wrap">
+                        <table class="order-details">
+                            <thead>
+                                <tr>
+                                    <th>Your Order Details</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody class="order-details-body">
                                 <tr><td><strong>Product</strong></td><td><strong>Total</strong></td></tr>
                                 @forelse($cart as $item)
                                     <tr>
@@ -237,109 +213,91 @@
                                     <td><strong>Rp {{ number_format($subtotal, 0, ',', '.') }}</strong></td>
                                 </tr>
                             </tbody>
-                            </table>
-                            <a href="{{ route('konfirmasi-pembayaran') }}" id="placeOrderBtn" class="boxed-btn disabled" style="pointer-events:none;opacity:0.6;">Place Order</a>
-                        </div>
+                        </table>
+                        <a href="{{ route('konfirmasi-pembayaran') }}" id="placeOrderBtn" class="boxed-btn disabled" style="pointer-events:none;opacity:0.6;">Place Order</a>
                     </div>
-
                 </div>
+
             </div>
         </div>
-        <!-- end check out section -->
-
-        <!-- footer -->
-        <div class="footer-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-box about-widget">
-                            <h2 class="widget-title">About us</h2>
-                            <p>GanciKuy adalah brand yang menyediakan gantungan kunci akrilik dengan desain unik dan berkualitas tinggi.
-                            Kami hadir di berbagai event dan bazar dengan konsep stand langsung, serta melayani preorder untuk desain khusus agar setiap produk benar-benar sesuai keinginan pelanggan.</p>
-                        </div>
+    </div>
+    <div class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box about-widget">
+                        <h2 class="widget-title">About us</h2>
+                        <p>GanciKuy adalah brand yang menyediakan gantungan kunci akrilik dengan desain unik dan berkualitas tinggi.
+                        Kami hadir di berbagai event dan bazar dengan konsep stand langsung, serta melayani preorder untuk desain khusus agar setiap produk benar-benar sesuai keinginan pelanggan.</p>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-box get-in-touch">
-                            <h2 class="widget-title">Get in Touch</h2>
-                            <ul>
-                                <li>📍 [Alamat Stand atau Lokasi Bisnis] Politeknik Negeri Tanah Laut</li>
-                                <li>📧 Email: gancikuy@gmail.com</li>
-                                <li>📱 WhatsApp: 085887693441</li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box get-in-touch">
+                        <h2 class="widget-title">Get in Touch</h2>
+                        <ul>
+                            <li>📍 Politeknik Negeri Tanah Laut</li>
+                            <li>📧 Email: gancikuy@gmail.com</li>
+                            <li>📱 WhatsApp: 085887693441</li>
+                        </ul>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-box pages">
-                            <h2 class="widget-title">Pages</h2>
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="services.html">Shop</a></li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box pages">
+                        <h2 class="widget-title">Pages</h2>
+                        <ul>
+                            <li><a href="{{ route('beranda-user') }}">Home</a></li>
+                            <li><a href="{{ route('about-user') }}">About</a></li>
+                            <li><a href="{{ route('shop-user') }}">Shop</a></li>
+                        </ul>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-box subscribe">
-                            <h2 class="widget-title">Support</h2>
-                            <p>Kalau Anda Suka Support kami ya</p>
-                            <form action="index.html">
-                                <input type="email" placeholder="Email">
-                                <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                            </form>
-                        </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box subscribe">
+                        <h2 class="widget-title">Support</h2>
+                        <p>Kalau Anda Suka Support kami ya</p>
+                        <form action="{{ route('beranda-user') }}">
+                            <input type="email" placeholder="Email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- end footer -->
-        
-        <!-- copyright -->
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <p>Copyrights &copy; 2025 - <a href="https://imransdesign.com/">GanciKuy</a>,  All Rights Reserved.<br>
-                            Distributed By - <a href="https://themewagon.com/">Politala</a>
-                        </p>
-                    </div>
-                    <div class="col-lg-6 text-right col-md-12">
-                        <div class="social-icons">
-                            <ul>
-                                <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-                            </ul>
-                        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <p>Copyrights &copy; 2025 - <a href="https://imransdesign.com/">GanciKuy</a>, All Rights Reserved.<br>
+                        Distributed By - <a href="https://themewagon.com/">Politala</a>
+                    </p>
+                </div>
+                <div class="col-lg-6 text-right col-md-12">
+                    <div class="social-icons">
+                        <ul>
+                            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- end copyright -->
-        
-        <!-- jquery -->
-        <script src="assets/js/jquery-1.11.3.min.js"></script>
-        <!-- bootstrap -->
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <!-- count down -->
-        <script src="assets/js/jquery.countdown.js"></script>
-        <!-- isotope -->
-        <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-        <!-- waypoints -->
-        <script src="assets/js/waypoints.js"></script>
-        <!-- owl carousel -->
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <!-- magnific popup -->
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
-        <!-- mean menu -->
-        <script src="assets/js/jquery.meanmenu.min.js"></script>
-        <!-- sticker js -->
-        <script src="assets/js/sticker.js"></script>
-        <!-- main js -->
-        <script src="assets/js/main.js"></script>
+    </div>
+    <script src="{{ asset('assets/js/jquery-1.11.3.min.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.countdown.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.isotope-3.0.6.min.js') }}"></script>
+    <script src="{{ asset('assets/js/waypoints.js') }}"></script>
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.meanmenu.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sticker.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
 
-        <script>
+    <script>
 document.addEventListener("DOMContentLoaded", function() {
     let paymentSelected = false;
     let buyerCompleted = false;
@@ -359,8 +317,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // tampilkan detail pembayaran sesuai pilihan
     function showPaymentDetails(method) {
-        let info = document.getElementById("paymentInfo");
         let details = document.getElementById("paymentDetails");
+        let info = document.getElementById("paymentInfo");
         let qrisImg = document.getElementById("qrisImage");
 
         details.style.display = "block";
@@ -419,10 +377,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // arahkan ke halaman konfirmasi-pembayaran dengan query string
             let url = "{{ route('konfirmasi-pembayaran') }}" 
-                      + "?name=" + encodeURIComponent(name)
-                      + "&phone=" + encodeURIComponent(phone)
-                      + "&payment=" + encodeURIComponent(selectedPayment)
-                      + "&info=" + encodeURIComponent(paymentInfoText);
+                     + "?name=" + encodeURIComponent(name)
+                     + "&phone=" + encodeURIComponent(phone)
+                     + "&payment=" + encodeURIComponent(selectedPayment)
+                     + "&info=" + encodeURIComponent(paymentInfoText);
 
             window.location.href = url;
         }
@@ -431,5 +389,5 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 
-    </body>
-    </html>
+</body>
+</html>

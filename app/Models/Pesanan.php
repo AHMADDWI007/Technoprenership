@@ -2,24 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Pesanan extends Model
 {
     use HasFactory;
 
-    // Nama tabel (karena default Laravel pakai jamak 'pesanans')
+    // Pastikan nama tabel benar
     protected $table = 'pesanan';
 
-    // Kolom yang bisa diisi
+    // ⭐ Pastikan semua kolom yang diisi di Controller ada di sini ⭐
     protected $fillable = [
         'nama_pembeli',
+        'nomor_hp',       // Kolom baru
+        'metode_bayar',   // Kolom baru
+        'catatan_opsional', // Kolom baru
         'total_harga',
         'status',
     ];
 
-    // Relasi ke DetailPesanan (satu pesanan punya banyak detail)
+    // ... (Definisi relasi, jika ada)
+
     public function detail()
     {
         return $this->hasMany(DetailPesanan::class, 'pesanan_id');

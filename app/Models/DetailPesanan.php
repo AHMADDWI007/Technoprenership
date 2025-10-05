@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class DetailPesanan extends Model
 {
     use HasFactory;
-
-    // Nama tabel yang digunakan
+    
+    // Pastikan nama tabel benar
     protected $table = 'detail_pesanan';
 
-    // Kolom yang bisa diisi secara massal
+    // ⭐ Pastikan semua kolom diisi di Controller ada di sini ⭐
     protected $fillable = [
         'pesanan_id',
         'barang_id',
@@ -23,13 +23,13 @@ class DetailPesanan extends Model
         'foto_request',
     ];
 
-    // Relasi ke Pesanan (detail pesanan milik satu pesanan)
+    // ... (Definisi relasi, jika ada)
+
     public function pesanan()
     {
         return $this->belongsTo(Pesanan::class, 'pesanan_id');
     }
 
-    // Relasi ke Barang (detail pesanan terkait dengan satu barang)
     public function barang()
     {
         return $this->belongsTo(Barang::class, 'barang_id');

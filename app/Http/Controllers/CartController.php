@@ -53,10 +53,14 @@ class CartController extends Controller
         $cart = session()->get('cart', []);
 
         if (isset($cart[$id])) {
-            // ✅ Update Quantity
-            $cart[$id]['quantity'] = max(1, intval($request->quantity));
+            // ✅ Update Quantity (Jika ini adalah request AJAX dari input quantity)
+            // Logika ini hanya akan dijalankan jika ada field 'quantity' di request, biasanya via AJAX
+            if ($request->has('quantity')) {
+                 $cart[$id]['quantity'] = max(1, intval($request->quantity));
+            }
 
-            // ✅ Upload Foto (hanya kalau bukan AJAX)
+
+            // ✅ Upload Foto (hanya kalau bukan AJAX, karena form ini menangani file upload)
             if (!$request->ajax() && $request->hasFile('uploads')) {
                 foreach ($request->file('uploads') as $file) {
                     $path = $file->store('cart_uploads', 'public');
@@ -64,27 +68,30 @@ class CartController extends Controller
                 }
             }
 
-            // ✅ Update Deskripsi (hanya kalau bukan AJAX)
-            if (!$request->ajax() && $request->filled('description')) {
+            // ⭐ PERBAIKAN INTI: Update Deskripsi (hanya kalau bukan AJAX) ⭐
+            // Kita gunakan $request->has('description') untuk memastikan field dikirim
+            // dan kita simpan nilainya, baik itu terisi (string) atau kosong ('').
+            if (!$request->ajax() && $request->has('description')) {
                 $cart[$id]['description'] = $request->description;
             }
         }
 
         session()->put('cart', $cart);
 
-        // ✅ Hitung ulang total
+        // ✅ Hitung ulang total (logika ini harus dieksekusi baik dari AJAX quantity atau POST form)
         $itemTotal = (float)$cart[$id]['price'] * (int)$cart[$id]['quantity'];
         $subtotal = collect($cart)->sum(fn($c) => (float)$c['price'] * (int)$c['quantity']);
 
-        // ✅ Kalau request dari AJAX → kirim JSON
+        // ✅ Kalau request dari AJAX (biasanya hanya untuk update quantity) → kirim JSON
         if ($request->ajax()) {
             return response()->json([
+                'success' => true,
                 'itemTotal' => $itemTotal,
                 'subtotal' => $subtotal
             ]);
         }
 
-        // ✅ Kalau bukan AJAX → redirect biasa
+        // ✅ Kalau bukan AJAX → redirect biasa (setelah update deskripsi/foto)
         return redirect()->route('cart-user')->with('success', 'Keranjang berhasil diperbarui!');
     }
 
