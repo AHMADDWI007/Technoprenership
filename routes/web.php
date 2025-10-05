@@ -53,6 +53,16 @@ Route::get('/about-user', function(){
     return view('HalamanUser.about-user');
 })->name('about-user');
 
+Route::get('/pesanan-user', function(){
+    return view('HalamanUser.pesanan-user');
+})->name('pesanan-user');
+
+Route::get('/checkout-user', [CartController::class, 'checkout'])->name('checkout-user');
+
+Route::get('/konfirmasi-pembayaran', function () {
+    return view('HalamanUser.konfirmasi-pembayaran');
+})->name('konfirmasi-pembayaran');
+
 // Cart routes
 Route::get('/cart-user', [CartController::class, 'index'])->name('cart-user');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');

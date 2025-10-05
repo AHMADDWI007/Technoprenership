@@ -62,7 +62,9 @@
 								<li class="current-list-item"><a href="{{ route('beranda-user') }}">Home</a></li>
 								<li><a href="{{ route('about-user') }}">About</a></li>
 								<li><a href="{{ route('shop-user') }}">Shop</a>
-								</li>
+								<ul class="sub-menu">
+										<li><a href="{{ route('pesanan-user') }}">Pesanan</a></li>
+									</ul>
 								<li>
 									<div class="header-icons">
 										<a class="shopping-cart" href="{{ route('cart-user') }}">

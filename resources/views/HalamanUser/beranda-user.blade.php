@@ -62,7 +62,10 @@
 								<li class="current-list-item"><a href="{{ route('beranda-user') }}">Home</a>
 								</li>
 								<li><a href="{{ route('about-user') }}">About</a></li>
-								<li><a href="{{ route('shop-user') }}">Shop</a></li>
+								<li><a href="{{ route('shop-user') }}">Shop</a>
+								<ul class="sub-menu">
+										<li><a href="{{ route('pesanan-user') }}">Pesanan</a></li>
+									</ul>
 								</li>
 								<li>
 								<div class="header-icons">
@@ -115,7 +118,7 @@
 							<p class="subtitle">GanciKuy</p>
 							<h1>Buat Gantungan Kunci Anda Lebih Menarik</h1>
 							<div class="hero-btns">
-								<a href="shop.html" class="boxed-btn">Custom Ganci Sekarang</a>
+								<a href="{{ route('shop-user') }}" class="boxed-btn">Pesan Ganci Sekarang</a>
 							</div>
 						</div>
 					</div>
@@ -132,7 +135,7 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
 						<h3><span class="orange-text">Pilih</span> Gantunganmu</h3>
-						<p>Ada berbagai bentuk gantungan kunci yang bisa kamu pilih.</p>
+						<p>Ada berbagai Template gantungan kunci yang bisa anda pilih</p>
 					</div>
 				</div>
 			</div>
@@ -141,31 +144,31 @@
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+							<a href="single-product.html"><img src="assets/img/products/product-img-7.jpg" alt=""></a>
 						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3>Coming Soon</h3>
+						<p class="product-price"><span>Per Pcs</span> Rp 7.000 </p>
+						<a href="{{ route('shop-user') }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
+							<a href="single-product.html"><img src="assets/img/products/product-img-8.jpg" alt=""></a>
 						</div>
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3>Khusus</h3>
+						<p class="product-price"><span>Per Pcs</span> Rp 8.000 </p>
+						<a href="{{ route('shop-user') }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
+							<a href="single-product.html"><img src="assets/img/products/product-img-9.jpg" alt=""></a>
 						</div>
-						<h3>Lemon</h3>
-						<p class="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3>Music</h3>
+						<p class="product-price"><span>Per Pcs</span> Rp 7.000 </p>
+						<a href="{{ route('shop-user') }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
 			</div>
@@ -179,16 +182,16 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-bg">
-						<a href="https://www.youtube.com/watch?v=DBLlFWYcIGQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
+						<a href="https://www.youtube.com/watch?v=X8be6QHxmTQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-text">
-						<p class="top-sub">Since Year 1999</p>
-						<h2>We are <span class="orange-text">Fruitkha</span></h2>
-						<p>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
-						<a href="about.html" class="boxed-btn mt-4">know more</a>
+						<p class="top-sub">Starting in the year 2025</p>
+						<h2>We are <span class="orange-text">GanciKuy</span></h2>
+						<p>GanciKuy adalah sebuah website yang dibangun untuk memperkenalkan brand gantungan kunci unik dan kreatif. Dengan tampilan modern dan sederhana, website ini memberikan informasi tentang awal berdirinya brand di tahun 2025, serta menampilkan visi untuk menghadirkan produk aksesori yang stylish dan bermanfaat.</p>
+						<p>Dengan desain clean dan responsif, GanciKuy hadir sebagai media promosi sekaligus branding digital untuk memperkenalkan produk gantungan kunci yang trendi, personal, dan relevan dengan gaya anak muda masa kini.</p>
+						<a href="{{ route('about-user') }}" class="boxed-btn mt-4">know more</a>
 					</div>
 				</div>
 			</div>

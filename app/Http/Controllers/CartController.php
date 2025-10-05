@@ -99,4 +99,13 @@ class CartController extends Controller
 
         return redirect()->route('cart-user')->with('success', 'Produk berhasil dihapus dari keranjang!');
     }
+
+    public function checkout()
+{
+    $cart = session()->get('cart', []);
+    $subtotal = collect($cart)->sum(fn($c) => (float)$c['price'] * (int)$c['quantity']);
+    
+    return view('HalamanUser.checkout-user', compact('cart', 'subtotal'));
+}
+
 }

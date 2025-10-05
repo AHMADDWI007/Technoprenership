@@ -135,6 +135,49 @@
 
     <div class="product-section mt-150 mb-150">
         <div class="container">
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="index.html">
+								<img src="assets/img/logoganci.png" alt="">
+							</a>
+						</div>
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li class="current-list-item"><a href="{{ route('beranda-user') }}">Home</a></li>
+								<li><a href="{{ route('about-user') }}">About</a></li>
+								<li><a href="{{ route('shop-user') }}">Shop</a>
+								<ul class="sub-menu">
+										<li><a href="{{ route('pesanan-user') }}">Pesanan</a></li>
+									</ul>
+								</li>
+								<li>
+									<div class="header-icons">
+										<a class="shopping-cart" href="{{ route('cart-user') }}">
+										<i class="fas fa-shopping-cart"></i>
+										@if(session('cart') && count(session('cart')) > 0)
+											<span class="cart-badge">{{ count(session('cart')) }}</span>
+										@endif</a>
+										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+									</div>
+								</li>
+							</ul>
+						</nav>
+						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
 
             {{-- Filter Kategori --}}
             <div class="row">

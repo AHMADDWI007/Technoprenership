@@ -62,7 +62,10 @@
 								<li class="current-list-item"><a href="{{ route('beranda-user') }}">Home</a>
 								</li>
 								<li><a href="{{ route('about-user') }}">About</a></li>
-								<li><a href="{{ route('shop-user') }}">Shop</a></li>
+								<li><a href="{{ route('shop-user') }}">Shop</a>
+								<ul class="sub-menu">
+										<li><a href="{{ route('pesanan-user') }}">Pesanan</a></li>
+									</ul>
 								<li>
 									<div class="header-icons">
 										<a class="shopping-cart" href="{{ route('cart-user') }}"><i class="fas fa-shopping-cart"></i></a>
@@ -162,7 +165,7 @@
 							</tr>
 							<tr>
 								<td colspan="6">
-									<label>Upload Desain (bisa lebih dari 1):</label>
+									<label>Upload Foto (jika mesan lebih dari 1 tambahkan Foto Lainnya):</label>
 									<input type="file" name="uploads[]" multiple class="form-control mb-2">
 									@if(!empty($item['uploads']))
 										<div class="d-flex flex-wrap mb-2">
@@ -173,7 +176,7 @@
 									@endif
 									<label>Deskripsi:</label>
 									<textarea name="description" class="form-control">{{ $item['description'] ?? '' }}</textarea>
-									<button type="submit" class="btn btn-sm btn-primary">Update</button>
+									<button type="submit" class="btn btn-sm btn-primary">Update (Upload Foto) </button>
 									</form>
 								</td>
 							</tr>
@@ -205,7 +208,7 @@
                     </table>
                     <div class="cart-buttons">
                         <a href="{{ route('shop-user') }}" class="boxed-btn">Lanjut Belanja</a>
-                        <a href="#" class="boxed-btn black">Check Out</a>
+                        <a href="{{ route('checkout-user') }}" class="boxed-btn black">Check Out</a>
                     </div>
                 </div>
             </div>
@@ -261,7 +264,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
 
 </body>
 </html>
