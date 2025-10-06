@@ -20,8 +20,23 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/shop.css') }}">
-
     <meta name="shop-filter-url" content="{{ route('shop.filter') }}">
+
+    <style>
+.card {
+    transition: all 0.3s ease;
+    border: none;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+}
+.badge {
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+</style>
 
 </head>
 <body>
@@ -94,18 +109,78 @@
         </div>
     </div>
     <div class="cart-section mt-150 mb-150">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="alert alert-info text-center" role="alert">
-                        Halaman ini akan menampilkan daftar riwayat pesanan Anda setelah Anda melakukan *checkout*.
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+
+                @if($pesanan->isEmpty())
+                    <div class="alert alert-warning text-center mt-4">
+                        Anda belum memiliki pesanan.
                     </div>
-                    {{-- Di sini akan ada tabel riwayat pesanan (Orders Table) --}}
-                </div>
+                @else
+                    @foreach ($pesanan as $psn)
+                        <div class="card shadow-lg mb-4 border-0 rounded-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5 class="fw-bold mb-0">{{ $psn->nama_pembeli }}</h5>
+                                    <span class="badge 
+                                        @if($psn->status == 'menunggu') bg-warning text-dark
+                                        @elseif($psn->status == 'diproses') bg-info text-white
+                                        @elseif($psn->status == 'selesai') bg-success
+                                        @else bg-secondary
+                                        @endif
+                                    ">
+                                        {{ ucfirst($psn->status) }}
+                                    </span>
+                                </div>
+
+                                <hr>
+
+                                {{-- Daftar Produk --}}
+                                @foreach ($psn->detail as $detail)
+                                    <div class="d-flex align-items-center mb-3">
+                                        @php
+                                            $imagePaths = is_string($detail->foto_request) && (str_starts_with($detail->foto_request, '[') || str_starts_with($detail->foto_request, '"')) 
+                                                ? json_decode($detail->foto_request) 
+                                                : [$detail->foto_request];
+                                            $firstImagePath = is_array($imagePaths) && !empty($imagePaths) ? $imagePaths[0] : $detail->foto_request;
+                                        @endphp
+
+                                        <div class="me-3">
+                                            @if($firstImagePath)
+                                                <img src="{{ asset('storage/' . $firstImagePath) }}" 
+                                                     alt="Foto Request" 
+                                                     class="rounded-3" 
+                                                     style="width:70px;height:70px;object-fit:cover;">
+                                            @else
+                                                <img src="{{ asset('assets/img/noimage.png') }}" 
+                                                     class="rounded-3" 
+                                                     style="width:70px;height:70px;object-fit:cover;">
+                                            @endif
+                                        </div>
+
+                                        <div>
+                                            <h6 class="fw-semibold mb-1">{{ $detail->barang->nama_produk ?? '-' }}</h6>
+                                            <p class="text-muted small mb-0">Jumlah: {{ $detail->jumlah }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                                <hr>
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="fw-bold text-muted mb-0">Total:</h6>
+                                    <h5 class="fw-bold text-primary mb-0">Rp {{ number_format($psn->total_harga, 0, ',', '.') }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+
             </div>
         </div>
     </div>
-    
+</div>
     <div class="footer-area">
         <div class="container">
             <div class="row">

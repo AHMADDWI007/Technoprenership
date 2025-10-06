@@ -7,11 +7,13 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PesananController; // Controller Pesanan yang baru dimodifikasi
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserPesananController;
 
 
 // Route default (halaman awal)
+// Route default langsung ke beranda-user
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('beranda-user');
 });
 
 // Halaman beranda Admin/Dasbor
@@ -36,6 +38,7 @@ Route::get('/pesanan-user', function(){
 // Route Shop User
 Route::get('/shop-user', [ShopController::class, 'index'])->name('shop-user');
 Route::get('/shop/filter', [ShopController::class, 'filter'])->name('shop.filter');
+Route::get('/pesanan-user', [UserPesananController::class, 'index'])->name('pesanan-user');
 
 
 // Route Checkout dan Konfirmasi
